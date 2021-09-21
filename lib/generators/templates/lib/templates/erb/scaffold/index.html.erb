@@ -1,0 +1,43 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Listing <%= plural_table_name %></h1>
+  <div class="d-none d-sm-inline-block">
+    <%%= link_to new_<%= singular_table_name %>_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New <%= human_name %>
+    <%% end %>
+  </div>  
+</div>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
+
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+     <% attributes.each do |attribute| -%>
+       <th><%= attribute.human_name %></th>
+     <% end -%>
+       <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%% @<%= plural_table_name%>.each do |<%= singular_table_name %>| %>
+            <%%= content_tag :tr, id: dom_id(<%= singular_table_name %>), class: dom_class(<%= singular_table_name %>) do %>
+      <% attributes.each do |attribute| -%>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+      <% end -%>
+        <td><%%= link_to 'Show', <%= singular_table_name %>, class: "btn btn-primary" %></td>
+              <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-warning" %></td>
+              <td><%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+            <%% end %>
+          <%% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

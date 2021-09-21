@@ -1,0 +1,29 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Show <%= singular_table_name %></h1>
+  <div class="d-none d-sm-inline-block">
+    <%%= link_to <%= index_helper %>_path, class: 'btn btn-light' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Back
+    <%% end %>
+     <%%=link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <%% end %>
+  </div>  
+</div>
+
+
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <%- attributes.each do |attribute| -%>
+            <tr><td><b><%= attribute.human_name %>:</b> <%%= @<%= singular_table_name %>.<%= attribute.name %> %></td></tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

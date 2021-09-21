@@ -1,0 +1,12 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">New <%= singular_table_name %></h1>
+  <div class="d-none d-sm-inline-block">
+    <%%= link_to <%= index_helper %>_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Back
+    <%% end %>
+  </div>  
+</div>
+
+<%%= render 'form' %>
+
